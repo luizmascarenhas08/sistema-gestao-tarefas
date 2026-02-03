@@ -1,41 +1,38 @@
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
 const taskRoutes = require('./routes/tasks');
 
 const app = express();
 
-// Defina os domínios permitidos
 const allowedOrigins = [
   "http://localhost:3000",
   "https://sistema-gestao-tarefas-one.vercel.app"
 ];
 
-// Middleware de CORS
 app.use(cors({
   origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
 
-// Para garantir que o preflight OPTIONS seja tratado
+// Libera preflight globalmente
 app.options('*', cors());
 
 app.use(express.json());
 
-// Rotas
+// Rotas protegidas
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
 const PORT = process.env.PORT || 4000;
 
-// Conexão com MongoDB Atlas
 mongoose.connect(process.env.MONGO_URI, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true 
 })
   .then(() => {
     console.log('Connected to MongoDB');
