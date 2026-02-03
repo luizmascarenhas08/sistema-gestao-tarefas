@@ -1,0 +1,90 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Garante que ocupe a tela toda */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Cor azul clara moderna */
+  background-color: #e3f2fd; 
+  
+  /* OPCIONAL: Um degradê suave para ficar ainda mais bonito */
+  /* background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); */
+}
+
+.login-card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box; /* Importante para o input não vazar */
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background: none;
+  border: none;
+  color: #007bff;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 90%; /* Deixa uma margem nas laterais */
+    padding: 1.5rem; /* Diminui o respiro interno */
+  }
+
+  .login-container {
+    padding: 20px; /* Evita que o card cole no topo da tela */
+  }
+
+  .login-card h2 {
+    font-size: 1.5rem; /* Diminui um pouco o título */
+  }
+}
