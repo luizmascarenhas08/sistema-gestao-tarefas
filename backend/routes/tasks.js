@@ -1,23 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const taskController = require('../controllers/taskController');
 
-// Preflight para /api/tasks
-router.options('/', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://sistema-gestao-tarefas-one.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Authorization,Content-Type");
-  return res.sendStatus(200);
-});
-
-// Preflight para /api/tasks/:id
-router.options('/:id', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://sistema-gestao-tarefas-one.vercel.app");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Authorization,Content-Type");
-  return res.sendStatus(200);
-});
+// Preflight sem auth (responde com cabeçalhos de CORS)
+router.options('/', cors());
+router.options('/:id', cors());
 
 // Rotas protegidas
 router.post('/', auth, taskController.createTask);
