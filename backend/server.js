@@ -8,11 +8,13 @@ const taskRoutes = require('./routes/tasks');
 
 const app = express();
 
+// Domínios permitidos
 const allowedOrigins = [
   "http://localhost:3000",
   "https://sistema-gestao-tarefas-one.vercel.app"
 ];
 
+// Configuração de CORS
 app.use(cors({
   origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -22,14 +24,16 @@ app.use(cors({
 // Libera preflight globalmente
 app.options('*', cors());
 
+// Middleware para JSON
 app.use(express.json());
 
-// Rotas protegidas
+// Rotas
 app.use('/api/auth', authRoutes);
 app.use('/api/tasks', taskRoutes);
 
 const PORT = process.env.PORT || 4000;
 
+// Conexão com MongoDB
 mongoose.connect(process.env.MONGO_URI, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true 
