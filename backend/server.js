@@ -21,8 +21,10 @@ app.use(cors({
   credentials: true
 }));
 
-// Libera preflight globalmente
-app.options('*', cors());
+// Libera preflight globalmente (antes das rotas e do auth)
+app.options('*', (req, res) => {
+  res.sendStatus(200);
+});
 
 // Middleware para JSON
 app.use(express.json());
