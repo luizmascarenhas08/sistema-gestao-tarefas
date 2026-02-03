@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-const BASE = 'http://localhost:4000'
+const BASE = 'https://sistema-gestao-tarefas.onrender.com'
 
 export default function TaskList({ tasks, token, onChange }){
   const toggle = async (task) => {

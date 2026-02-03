@@ -3,7 +3,7 @@ import axios from 'axios'
 import TaskForm from '../components/TaskForm'
 import TaskList from '../components/TaskList'
 
-const BASE = 'http://localhost:4000'
+const BASE = 'https://sistema-gestao-tarefas.onrender.com'
 
 export default function Dashboard({ token, setToken }) {
   const [tasks, setTasks] = useState([])
