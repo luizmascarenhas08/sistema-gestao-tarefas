@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import './Login.css' // <--- IMPORTANTE: Importe o arquivo aqui
+import './Login.css'
 
 export default function Login({ setToken }) {
   const [email, setEmail] = useState('')
@@ -12,7 +12,7 @@ export default function Login({ setToken }) {
     e.preventDefault()
     try {
       const url = isRegister ? '/api/auth/register' : '/api/auth/login'
-      const base = 'http://localhost:4000'
+      const base = 'https://sistema-gestao-tarefas.onrender.com'
       const res = await axios.post(base + url, isRegister ? { name, email, password } : { email, password })
       setToken(res.data.token)
     } catch (err) {
