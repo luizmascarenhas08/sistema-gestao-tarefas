@@ -14,15 +14,17 @@ const allowedOrigins = [
   "https://sistema-gestao-tarefas-one.vercel.app"
 ];
 
-// Configuração de CORS
 app.use(cors({
   origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Authorization", "Content-Type"],
   credentials: true
 }));
 
-// Libera preflight usando o cors middleware
 app.options('*', cors());
+app.options('/api/tasks', cors());
+app.options('/api/tasks/:id', cors());
+
 
 // Middleware para JSON
 app.use(express.json());
