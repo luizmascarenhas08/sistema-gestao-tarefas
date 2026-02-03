@@ -12,7 +12,7 @@ export default function Login({ setToken }) {
     e.preventDefault()
     try {
       const url = isRegister ? '/api/auth/register' : '/api/auth/login'
-      const base = 'https://sistema-gestao-tarefas.onrender.com'
+      const base = 'https://sgt-backend-v2.onrender.com'
       const res = await axios.post(base + url, isRegister ? { name, email, password } : { email, password })
       setToken(res.data.token)
     } catch (err) {
