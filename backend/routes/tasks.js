@@ -4,8 +4,8 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const taskController = require('../controllers/taskController');
 
-// Preflight sem auth (responde com cabeçalhos de CORS)
-router.options('/', cors());
+router.options('', cors());   // cobre /api/tasks sem barra
+router.options('/', cors());  // cobre /api/tasks/
 router.options('/:id', cors());
 
 // Rotas protegidas
